@@ -1,0 +1,355 @@
+/*
+  U-M GPT Utility Enhancements Only
+  No dark mode / no global theme restyling.
+*/
+
+/* ============================================================
+   Shared variables for utility controls only
+   ============================================================ */
+
+:root.umgpt-chatgpt-polish {
+  --umgpt-util-text: #1f2937;
+  --umgpt-util-muted: #000000;
+  --umgpt-util-icon: #000000;
+  --umgpt-util-border: rgba(0, 0, 0, 0.14);
+  --umgpt-util-bg: rgba(255, 255, 255, 0.92);
+  --umgpt-util-bg-hover: rgba(243, 244, 246, 0.96);
+  --umgpt-util-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+  --umgpt-util-success: #000000;
+  --umgpt-util-success-bg: rgba(22, 163, 74, 0.12);
+}
+
+/* ============================================================
+   Copy icon buttons
+   ============================================================ */
+
+.umgpt-chatgpt-polish-body .umgpt-copy-icon-btn {
+  appearance: none !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  color: var(--umgpt-util-icon) !important;
+
+  border-radius: 8px !important;
+
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 0 !important;
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+
+  cursor: pointer !important;
+  opacity: 0.8 !important;
+
+  font: inherit !important;
+  line-height: 1 !important;
+
+  transition:
+    opacity 120ms ease,
+    background-color 120ms ease,
+    color 120ms ease,
+    border-color 120ms ease,
+    transform 120ms ease !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-copy-icon-btn:hover {
+  opacity: 1 !important;
+  background: var(--umgpt-util-bg-hover) !important;
+  color: #000000 !important;
+  border-color: var(--umgpt-util-border) !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-copy-icon-btn:active {
+  transform: scale(0.96) !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-copy-icon-btn:focus-visible {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-copy-icon-btn.umgpt-copied {
+  background: var(--umgpt-util-success-bg) !important;
+  border-color: rgba(22, 163, 74, 0.35) !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-copy-icon-btn.umgpt-copied * {
+  color: #000000 !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-copy-svg {
+  width: 16px !important;
+  height: 16px !important;
+  display: block !important;
+  flex-shrink: 0 !important;
+  color: currentColor !important;
+}
+
+/* Hide any legacy labels if they exist from an older script version */
+.umgpt-chatgpt-polish-body .umgpt-code-copy-label,
+.umgpt-chatgpt-polish-body .umgpt-copy-chat-label {
+  display: none !important;
+}
+
+/* ============================================================
+   Code-block copy button
+   ============================================================ */
+
+.umgpt-chatgpt-polish-body .umgpt-code-copy-container {
+  position: relative !important;
+  padding-bottom: 52px !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-code-copy-btn {
+  position: absolute !important;
+  top: auto !important;
+  right: 10px !important;
+  bottom: 10px !important;
+  z-index: 5 !important;
+
+  width: 34px !important;
+  min-width: 34px !important;
+  height: 34px !important;
+  padding: 0 !important;
+
+  border: 1px solid rgba(0, 0, 0, 0.16) !important;
+  border-radius: 10px !important;
+
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #000000 !important;
+
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.22) !important;
+
+  opacity: 0.9 !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-code-copy-container:hover .umgpt-code-copy-btn {
+  opacity: 1 !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-code-copy-btn:hover {
+  background: rgba(255, 255, 255, 1) !important;
+  color: #000000 !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-code-copy-btn.umgpt-copied {
+  background: rgba(22, 163, 74, 0.14) !important;
+  border-color: rgba(22, 163, 74, 0.35) !important;
+  color: #000000 !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-code-copy-btn.umgpt-copied * {
+  color: #000000 !important;
+}
+
+/* ============================================================
+   Message-level copy buttons
+   ============================================================ */
+
+.umgpt-chatgpt-polish-body .umgpt-message-copy-container {
+  position: relative !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-message-copy-btn {
+  position: absolute !important;
+  top: -2px !important;
+  right: -36px !important;
+  z-index: 2 !important;
+
+  background: var(--umgpt-util-bg) !important;
+  border: 1px solid var(--umgpt-util-border) !important;
+  box-shadow: var(--umgpt-util-shadow) !important;
+  color: #000000 !important;
+
+  opacity: 0 !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-message-copy-container:hover .umgpt-message-copy-btn,
+.umgpt-chatgpt-polish-body .umgpt-message-copy-btn:focus-visible {
+  opacity: 1 !important;
+}
+
+.umgpt-chatgpt-polish-body [role="log"] > div[data-umgpt-role="user"] .umgpt-message-copy-btn {
+  right: auto !important;
+  left: -36px !important;
+  top: 4px !important;
+}
+
+@media (max-width: 780px) {
+  .umgpt-chatgpt-polish-body .umgpt-message-copy-btn {
+    right: 6px !important;
+    top: 6px !important;
+    opacity: 0.85 !important;
+  }
+
+  .umgpt-chatgpt-polish-body [role="log"] > div[data-umgpt-role="user"] .umgpt-message-copy-btn {
+    left: 6px !important;
+    right: auto !important;
+  }
+}
+
+/* ============================================================
+   Copy visible chat button
+   ============================================================ */
+
+.umgpt-chatgpt-polish-body .umgpt-copy-chat-btn {
+  width: 36px !important;
+  min-width: 36px !important;
+  height: 36px !important;
+  padding: 0 !important;
+  margin-left: auto !important;
+
+  border-radius: 10px !important;
+  border: 1px solid var(--umgpt-util-border) !important;
+
+  background: var(--umgpt-util-bg) !important;
+  color: #000000 !important;
+
+  box-shadow: none !important;
+  opacity: 0.9 !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-copy-chat-btn:hover {
+  background: var(--umgpt-util-bg-hover) !important;
+  color: #000000 !important;
+  opacity: 1 !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-copy-chat-btn.umgpt-copied {
+  color: #000000 !important;
+  background: var(--umgpt-util-success-bg) !important;
+  border-color: rgba(22, 163, 74, 0.35) !important;
+}
+
+/* ============================================================
+   Raw user prompt rendering
+   No Markdown rendering. No HTML rendering.
+   ============================================================ */
+
+.umgpt-chatgpt-polish-body .umgpt-raw-prompt-text {
+  white-space: pre-wrap !important;
+  overflow-wrap: anywhere !important;
+  word-break: break-word !important;
+}
+
+/* ============================================================
+   Long prompt collapse / expand
+   ============================================================ */
+
+.umgpt-chatgpt-polish-body .umgpt-collapsible-prompt {
+  position: relative !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-collapsible-prompt.umgpt-is-collapsed .markdown-body {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 6 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+  max-height: 10.5em !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-collapsible-prompt.umgpt-is-collapsed::after {
+  content: "" !important;
+  pointer-events: none !important;
+
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 38px !important;
+
+  height: 44px !important;
+  border-radius: 0 0 24px 24px !important;
+
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(229, 231, 235, 0.95)
+  ) !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-prompt-toggle {
+  align-self: flex-start !important;
+
+  margin-top: 6px !important;
+  padding: 4px 9px !important;
+
+  border: 1px solid var(--umgpt-util-border) !important;
+  border-radius: 999px !important;
+
+  background: var(--umgpt-util-bg) !important;
+  color: var(--umgpt-util-text) !important;
+
+  font-size: 12px !important;
+  font-weight: 600 !important;
+
+  cursor: pointer !important;
+
+  box-shadow: none !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-prompt-toggle:hover {
+  background: var(--umgpt-util-bg-hover) !important;
+  color: var(--umgpt-util-text) !important;
+}
+
+/* ============================================================
+   Compact sidebar chat history
+   ============================================================ */
+
+.umgpt-chatgpt-polish-body .umgpt-history-link {
+  align-items: flex-start !important;
+  padding-top: 7px !important;
+  padding-bottom: 7px !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-history-title {
+  white-space: normal !important;
+  overflow: hidden !important;
+  text-overflow: unset !important;
+
+  line-height: 1.25 !important;
+
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+
+  max-height: 2.6em !important;
+  word-break: break-word !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-history-link:hover .umgpt-history-title,
+.umgpt-chatgpt-polish-body .umgpt-history-link:focus-visible .umgpt-history-title,
+.umgpt-chatgpt-polish-body .umgpt-history-link:focus-within .umgpt-history-title {
+  -webkit-line-clamp: 6 !important;
+  max-height: 7.8em !important;
+}
+
+.umgpt-chatgpt-polish-body .umgpt-history-link > .shrink-0 {
+  padding-top: 0 !important;
+}
+
+/* ============================================================
+   Accessibility / focus
+   ============================================================ */
+
+.umgpt-chatgpt-polish-body .umgpt-copy-icon-btn:focus-visible,
+.umgpt-chatgpt-polish-body .umgpt-prompt-toggle:focus-visible {
+  outline: 2px solid #2563eb !important;
+  outline-offset: 2px !important;
+}
+
+/* ============================================================
+   Optional: reduce motion
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .umgpt-chatgpt-polish-body .umgpt-copy-icon-btn,
+  .umgpt-chatgpt-polish-body .umgpt-prompt-toggle {
+    transition: none !important;
+  }
+}

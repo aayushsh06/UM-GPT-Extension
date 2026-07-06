@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "U-M GPT Utilities",
+  "short_name": "U-M GPT Utils",
+  "version": "0.5.0",
+  "description": "Adds copy buttons, raw prompt display, prompt truncation, and other utility enhancements to U-M GPT.",
+  "minimum_chrome_version": "114",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://umgpt.umich.edu/*",
+        "https://*.umgpt.umich.edu/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "permissions": [],
+  "host_permissions": [
+    "https://umgpt.umich.edu/*",
+    "https://*.umgpt.umich.edu/*"
+  ]
+}
